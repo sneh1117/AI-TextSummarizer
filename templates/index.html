@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Distill — AI Text Summarizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0e0e0f; --surface: #161618; --surface2: #1e1e21; --border: #2a2a2e;
+      --accent: #c8f060; --accent-dim: rgba(200,240,96,0.12); --accent-glow: rgba(200,240,96,0.25);
+      --text: #f0f0ee; --text-muted: #7a7a80; --text-dim: #4a4a50;
+      --error: #ff6b6b; --error-dim: rgba(255,107,107,0.1);
+      --radius: 12px; --radius-sm: 6px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(200,240,96,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(200,240,96,0.03) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; top: -200px; left: -200px; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,240,96,0.07) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 0 24px; }
+    header {
+      padding: 48px 0 40px; display: flex; align-items: flex-end; justify-content: space-between;
+      border-bottom: 1px solid var(--border); animation: fadeDown 0.6s ease both;
+    }
+    .logo { display: flex; flex-direction: column; gap: 4px; }
+    .logo-word { font-family: 'DM Serif Display', serif; font-size: 2.6rem; color: var(--text); line-height: 1; letter-spacing: -0.02em; }
+    .logo-word span { color: var(--accent); }
+    .logo-sub { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; }
+    .header-badge {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent);
+      border: 1px solid var(--accent); padding: 4px 10px; border-radius: 100px;
+      letter-spacing: 0.08em; animation: pulse-border 3s infinite;
+    }
+    @keyframes pulse-border { 0%,100%{box-shadow:0 0 0 0 var(--accent-glow)} 50%{box-shadow:0 0 0 4px var(--accent-dim)} }
+    main { padding: 48px 0 80px; display: flex; flex-direction: column; gap: 32px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; animation: fadeUp 0.5s ease both; }
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.2s; }
+    .card-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .card-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--accent); }
+    textarea {
+      width: 100%; min-height: 220px; background: var(--surface2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); color: var(--text); font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; line-height: 1.7; padding: 18px; resize: vertical; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    textarea::placeholder { color: var(--text-dim); }
+    textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+    textarea.error { border-color: var(--error); box-shadow: 0 0 0 3px var(--error-dim); }
+    .meta-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+    .char-counter { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text-muted); transition: color 0.2s; }
+    .char-counter.warn { color: #ffb347; }
+    .char-counter.error { color: var(--error); }
+    .char-counter.ok { color: var(--accent); }
+    .validation-msg { font-size: 0.8rem; color: var(--error); min-height: 18px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; background: var(--accent);
+      color: #0e0e0f; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.9rem;
+      border: none; border-radius: var(--radius-sm); padding: 13px 28px; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s; position: relative; overflow: hidden;
+    }
+    .btn::after { content:''; position:absolute; inset:0; background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.18) 50%,transparent 70%); transform:translateX(-100%); transition:transform 0.4s; }
+    .btn:hover:not(:disabled)::after { transform: translateX(100%); }
+    .btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 24px var(--accent-glow); }
+    .btn:active:not(:disabled) { transform: translateY(0); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-row { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+    .btn-secondary { background: transparent; color: var(--text-muted); border: 1px solid var(--border); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; padding: 12px 20px; border-radius: var(--radius-sm); cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+    .btn-secondary:hover { color: var(--text); border-color: var(--text-muted); }
+    .spinner { width: 16px; height: 16px; border: 2px solid rgba(0,0,0,0.2); border-top-color: #0e0e0f; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
+    .btn.loading .spinner { display: block; }
+    .btn.loading .btn-text { opacity: 0.7; }
+    .output-card { display: none; animation: fadeUp 0.4s ease both; }
+    .output-card.visible { display: block; }
+    .output-text { font-family: 'DM Serif Display', serif; font-size: 1.15rem; line-height: 1.75; color: var(--text); background: var(--surface2); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px 22px; }
+    .output-meta { margin-top: 10px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--text-dim); }
+    .toast { display: none; background: var(--error-dim); border: 1px solid var(--error); border-radius: var(--radius-sm); padding: 14px 18px; font-size: 0.85rem; color: var(--error); margin-top: 12px; }
+    .toast.visible { display: block; }
+    .history-list { display: flex; flex-direction: column; gap: 12px; }
+    .history-empty { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--text-dim); text-align: center; padding: 28px 0; border: 1px dashed var(--border); border-radius: var(--radius-sm); }
+    .history-item { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; transition: border-color 0.2s; }
+    .history-item:hover { border-color: var(--text-dim); }
+    .history-summary { font-family: 'DM Serif Display', serif; font-size: 0.95rem; line-height: 1.6; color: var(--text); margin-bottom: 8px; }
+    .history-footer { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--text-dim); }
+    .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .history-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+    .history-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--accent); }
+    footer { border-top: 1px solid var(--border); padding: 28px 0; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--text-dim); display: flex; justify-content: space-between; animation: fadeUp 0.6s 0.3s ease both; opacity: 0; animation-fill-mode: forwards; }
+    footer span { color: var(--accent); }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes spin { to{transform:rotate(360deg)} }
+    @media(max-width:600px) { .logo-word{font-size:1.9rem} .card{padding:20px} .btn-row{flex-direction:column;align-items:stretch} footer{flex-direction:column;gap:6px} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <div class="logo-word">Di<span>sti</span>ll</div>
+        <div class="logo-sub">AI Text Summarizer · HuggingFace + Flask</div>
+      </div>
+      <div class="header-badge">BART · Local Model</div>
+    </header>
+
+    <main>
+      <!-- Input -->
+      <div class="card">
+        <div class="card-label">Input Text</div>
+        <textarea id="inputText" placeholder="Paste your article, paper, or any long-form text here…" spellcheck="false"></textarea>
+        <div class="meta-row">
+          <div class="validation-msg" id="validationMsg"></div>
+          <div class="char-counter" id="charCounter">0 / 2,000 words</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn" id="summarizeBtn" disabled>
+            <div class="spinner"></div>
+            <span class="btn-text">Summarize</span>
+          </button>
+          <button class="btn-secondary" id="clearBtn">Clear</button>
+        </div>
+        <div class="toast" id="errorToast"></div>
+      </div>
+
+      <!-- Output -->
+      <div class="card output-card" id="outputCard">
+        <div class="card-label">Summary</div>
+        <div class="output-text" id="outputText"></div>
+        <div class="output-meta" id="outputMeta"></div>
+      </div>
+
+      <!-- History -->
+      <div class="card">
+        <div class="history-header">
+          <div class="history-label">Recent Summaries</div>
+          <button class="btn-secondary" id="refreshHistory" style="padding:6px 14px;font-size:0.72rem;">Refresh</button>
+        </div>
+        <div class="history-list" id="historyList">
+          <div class="history-empty">No summaries yet. Paste some text above to get started.</div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span>Distill</span>
+      <div>Flask · HuggingFace Transformers · SQLite</div>
+    </footer>
+  </div>
+
+  <script>
+   const MIN_WORDS = 100;
+const MAX_WORDS = 2000;
+const WARN_THRESHOLD = 1800;
+
+inputText.addEventListener('input', validateInput);
+
+function validateInput() {
+  const words      = inputText.value.trim().split(/\s+/).filter(w => w.length > 0);
+  const wordCount  = inputText.value.trim() === '' ? 0 : words.length;
+
+  // Update counter
+  charCounter.textContent = `${wordCount.toLocaleString()} / ${MAX_WORDS.toLocaleString()} words`;
+  charCounter.className = 'char-counter';
+  if (wordCount > WARN_THRESHOLD) charCounter.classList.add('warn');
+  if (wordCount > MAX_WORDS)      charCounter.classList.add('error');
+  if (wordCount >= MIN_WORDS && wordCount <= MAX_WORDS) charCounter.classList.add('ok');
+
+  inputText.classList.remove('error');
+  validationMsg.textContent = '';
+
+  if (wordCount === 0) { summarizeBtn.disabled = true; return; }
+
+  if (wordCount < MIN_WORDS) {
+    validationMsg.textContent = `Too short — need at least ${MIN_WORDS} words (${MIN_WORDS - wordCount} more to go).`;
+    inputText.classList.add('error');
+    summarizeBtn.disabled = true;
+    return;
+  }
+
+  if (wordCount > MAX_WORDS) {
+    validationMsg.textContent = `Too long — remove ${wordCount - MAX_WORDS} words to continue.`;
+    inputText.classList.add('error');
+    summarizeBtn.disabled = true;
+    return;
+  }
+
+  summarizeBtn.disabled = false;
+}
+
+    clearBtn.addEventListener('click', () => {
+      inputText.value = '';
+      validateInput();
+      outputCard.classList.remove('visible');
+      errorToast.classList.remove('visible');
+      inputText.focus();
+    });
+
+    summarizeBtn.addEventListener('click', async () => {
+      const text = inputText.value.trim();
+      if (!text) return;
+
+      summarizeBtn.classList.add('loading');
+      summarizeBtn.disabled = true;
+      errorToast.classList.remove('visible');
+      outputCard.classList.remove('visible');
+      const t0 = Date.now();
+
+      try {
+        const res  = await fetch('/summarize', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text }) });
+        const data = await res.json();
+        const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
+
+        if (!res.ok) { showError(data.error || 'Something went wrong.'); return; }
+
+        outputText.textContent = data.summary;
+        outputMeta.textContent = `Generated in ${elapsed}s · ${data.summary.length} chars in summary`;
+        outputCard.classList.add('visible');
+        outputCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        loadHistory();
+      } catch (err) {
+        showError('Could not reach the server. Make sure Flask is running.');
+      } finally {
+        summarizeBtn.classList.remove('loading');
+        validateInput();
+      }
+    });
+
+    function showError(msg) {
+      errorToast.textContent = msg;
+      errorToast.classList.add('visible');
+    }
+
+    async function loadHistory() {
+      try {
+        const res  = await fetch('/history');
+        const data = await res.json();
+        if (!data.length) {
+          historyList.innerHTML = '<div class="history-empty">No summaries yet. Paste some text above to get started.</div>';
+          return;
+        }
+        historyList.innerHTML = data.map(item => `
+          <div class="history-item">
+            <div class="history-summary">${escapeHtml(item.summary)}</div>
+            <div class="history-footer">
+              <span>${item.char_count.toLocaleString()} chars input</span>
+              <span>${formatDate(item.created_at)}</span>
+            </div>
+          </div>`).join('');
+      } catch {
+        historyList.innerHTML = '<div class="history-empty">Could not load history.</div>';
+      }
+    }
+
+    refreshHistory.addEventListener('click', loadHistory);
+
+    function escapeHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function formatDate(iso) {
+      if (!iso) return '—';
+      return new Date(iso).toLocaleString('en-GB', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' });
+    }
+
+    loadHistory();
+  </script>
+</body>
+</html>

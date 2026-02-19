@@ -1,0 +1,212 @@
+2026-02-19 14:56:51 [INFO] Starting Distill Flask app...
+2026-02-19 14:56:51 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 14:56:51 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 14:56:51 [INFO]  * Restarting with stat
+2026-02-19 14:56:51 [INFO] Starting Distill Flask app...
+2026-02-19 14:56:51 [WARNING]  * Debugger is active!
+2026-02-19 14:56:51 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 14:56:55 [INFO] 127.0.0.1 - - [19/Feb/2026 14:56:55] "GET / HTTP/1.1" 200 -
+2026-02-19 14:56:55 [INFO] History endpoint called
+2026-02-19 14:56:55 [INFO] Returned 0 history records
+2026-02-19 14:56:55 [INFO] 127.0.0.1 - - [19/Feb/2026 14:56:55] "GET /history HTTP/1.1" 200 -
+2026-02-19 14:57:12 [INFO] Summarize request received
+2026-02-19 14:57:12 [INFO] Input received — 4039 characters
+2026-02-19 14:57:12 [ERROR] Unexpected error during summarization — API error 410: {"error":"https://api-inference.huggingface.co is no longer supported. Please use https://router.huggingface.co instead."}
+Traceback (most recent call last):
+  File "d:\AI_textSum\app.py", line 65, in summarize_route
+    summary = summarize(text)
+  File "d:\AI_textSum\summarizer.py", line 34, in summarize
+    raise RuntimeError(f"API error {response.status_code}: {response.text}")
+RuntimeError: API error 410: {"error":"https://api-inference.huggingface.co is no longer supported. Please use https://router.huggingface.co instead."}
+2026-02-19 14:57:12 [INFO] 127.0.0.1 - - [19/Feb/2026 14:57:12] "[35m[1mPOST /summarize HTTP/1.1[0m" 500 -
+2026-02-19 14:58:27 [INFO]  * Detected change in 'd:\\AI_textSum\\summarizer.py', reloading
+2026-02-19 14:58:27 [INFO]  * Restarting with stat
+2026-02-19 14:58:28 [INFO] Starting Distill Flask app...
+2026-02-19 14:58:28 [WARNING]  * Debugger is active!
+2026-02-19 14:58:28 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 14:58:36 [INFO] Starting Distill Flask app...
+2026-02-19 14:58:36 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 14:58:36 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 14:58:36 [INFO]  * Restarting with stat
+2026-02-19 14:58:36 [INFO] Starting Distill Flask app...
+2026-02-19 14:58:36 [WARNING]  * Debugger is active!
+2026-02-19 14:58:36 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 14:58:52 [INFO] 127.0.0.1 - - [19/Feb/2026 14:58:52] "GET / HTTP/1.1" 200 -
+2026-02-19 14:58:52 [INFO] History endpoint called
+2026-02-19 14:58:52 [INFO] Returned 0 history records
+2026-02-19 14:58:52 [INFO] 127.0.0.1 - - [19/Feb/2026 14:58:52] "GET /history HTTP/1.1" 200 -
+2026-02-19 14:59:13 [INFO] Summarize request received
+2026-02-19 14:59:13 [INFO] Input received — 3747 characters
+2026-02-19 14:59:14 [ERROR] Unexpected error during summarization — API error 404: Not Found
+Traceback (most recent call last):
+  File "d:\AI_textSum\app.py", line 65, in summarize_route
+    summary = summarize(text)
+  File "d:\AI_textSum\summarizer.py", line 33, in summarize
+    raise RuntimeError(f"API error {response.status_code}: {response.text}")
+RuntimeError: API error 404: Not Found
+2026-02-19 14:59:14 [INFO] 127.0.0.1 - - [19/Feb/2026 14:59:14] "[35m[1mPOST /summarize HTTP/1.1[0m" 500 -
+2026-02-19 14:59:50 [INFO]  * Detected change in 'd:\\AI_textSum\\summarizer.py', reloading
+2026-02-19 14:59:50 [INFO]  * Restarting with stat
+2026-02-19 14:59:50 [INFO] Starting Distill Flask app...
+2026-02-19 14:59:50 [WARNING]  * Debugger is active!
+2026-02-19 14:59:50 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 14:59:59 [INFO] Starting Distill Flask app...
+2026-02-19 14:59:59 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 14:59:59 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 14:59:59 [INFO]  * Restarting with stat
+2026-02-19 14:59:59 [INFO] Starting Distill Flask app...
+2026-02-19 14:59:59 [WARNING]  * Debugger is active!
+2026-02-19 14:59:59 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:00:03 [INFO] 127.0.0.1 - - [19/Feb/2026 15:00:03] "GET / HTTP/1.1" 200 -
+2026-02-19 15:00:03 [INFO] History endpoint called
+2026-02-19 15:00:03 [INFO] Returned 0 history records
+2026-02-19 15:00:03 [INFO] 127.0.0.1 - - [19/Feb/2026 15:00:03] "GET /history HTTP/1.1" 200 -
+2026-02-19 15:00:15 [INFO] Summarize request received
+2026-02-19 15:00:15 [INFO] Input received — 4039 characters
+2026-02-19 15:00:15 [ERROR] Unexpected error during summarization — API error 404: Not Found
+Traceback (most recent call last):
+  File "d:\AI_textSum\app.py", line 65, in summarize_route
+    summary = summarize(text)
+  File "d:\AI_textSum\summarizer.py", line 33, in summarize
+    raise RuntimeError(f"API error {response.status_code}: {response.text}")
+RuntimeError: API error 404: Not Found
+2026-02-19 15:00:15 [INFO] 127.0.0.1 - - [19/Feb/2026 15:00:15] "[35m[1mPOST /summarize HTTP/1.1[0m" 500 -
+2026-02-19 15:01:54 [INFO]  * Detected change in 'd:\\AI_textSum\\summarizer.py', reloading
+2026-02-19 15:01:54 [INFO]  * Restarting with stat
+2026-02-19 15:01:54 [INFO] Starting Distill Flask app...
+2026-02-19 15:01:54 [WARNING]  * Debugger is active!
+2026-02-19 15:01:54 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:02:27 [INFO]  * Detected change in 'd:\\AI_textSum\\summarizer.py', reloading
+2026-02-19 15:02:27 [INFO]  * Restarting with stat
+2026-02-19 15:02:27 [INFO] Starting Distill Flask app...
+2026-02-19 15:02:27 [WARNING]  * Debugger is active!
+2026-02-19 15:02:27 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:02:53 [INFO] Starting Distill Flask app...
+2026-02-19 15:02:53 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 15:02:53 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 15:02:53 [INFO]  * Restarting with stat
+2026-02-19 15:02:53 [INFO] Starting Distill Flask app...
+2026-02-19 15:02:53 [WARNING]  * Debugger is active!
+2026-02-19 15:02:53 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:02:57 [INFO] 127.0.0.1 - - [19/Feb/2026 15:02:57] "GET / HTTP/1.1" 200 -
+2026-02-19 15:02:57 [INFO] History endpoint called
+2026-02-19 15:02:57 [INFO] Returned 0 history records
+2026-02-19 15:02:57 [INFO] 127.0.0.1 - - [19/Feb/2026 15:02:57] "GET /history HTTP/1.1" 200 -
+2026-02-19 15:03:11 [INFO] Summarize request received
+2026-02-19 15:03:11 [INFO] Input received — 4038 characters
+2026-02-19 15:03:11 [WARNING] Validation error — Text too long. Maximum 1000 characters, you sent 4038.
+2026-02-19 15:03:11 [INFO] 127.0.0.1 - - [19/Feb/2026 15:03:11] "[31m[1mPOST /summarize HTTP/1.1[0m" 400 -
+2026-02-19 15:03:50 [INFO] Summarize request received
+2026-02-19 15:03:50 [INFO] Input received — 998 characters
+2026-02-19 15:03:56 [INFO] Summarization successful — completed in 6.39s | Input: 998 chars | Output: 305 chars
+2026-02-19 15:03:56 [INFO] Summary saved to database
+2026-02-19 15:03:56 [INFO] 127.0.0.1 - - [19/Feb/2026 15:03:56] "POST /summarize HTTP/1.1" 200 -
+2026-02-19 15:03:56 [INFO] History endpoint called
+2026-02-19 15:03:56 [INFO] Returned 1 history records
+2026-02-19 15:03:56 [INFO] 127.0.0.1 - - [19/Feb/2026 15:03:56] "GET /history HTTP/1.1" 200 -
+2026-02-19 15:10:02 [INFO] Starting Distill Flask app...
+2026-02-19 15:10:02 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 15:10:02 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 15:10:02 [INFO]  * Restarting with stat
+2026-02-19 15:10:02 [INFO] Starting Distill Flask app...
+2026-02-19 15:10:02 [WARNING]  * Debugger is active!
+2026-02-19 15:10:02 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:10:10 [INFO] 127.0.0.1 - - [19/Feb/2026 15:10:10] "GET / HTTP/1.1" 200 -
+2026-02-19 15:10:10 [INFO] History endpoint called
+2026-02-19 15:10:10 [INFO] Returned 1 history records
+2026-02-19 15:10:10 [INFO] 127.0.0.1 - - [19/Feb/2026 15:10:10] "GET /history HTTP/1.1" 200 -
+2026-02-19 15:12:03 [INFO] Summarize request received
+2026-02-19 15:12:03 [INFO] Input received — 4987 characters
+2026-02-19 15:12:03 [WARNING] Validation error — Text too long. Maximum 1000 characters, you sent 4987.
+2026-02-19 15:12:03 [INFO] 127.0.0.1 - - [19/Feb/2026 15:12:03] "[31m[1mPOST /summarize HTTP/1.1[0m" 400 -
+2026-02-19 15:13:56 [INFO] Starting Distill Flask app...
+2026-02-19 15:13:56 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 15:13:56 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 15:13:56 [INFO]  * Restarting with stat
+2026-02-19 15:13:56 [INFO] Starting Distill Flask app...
+2026-02-19 15:13:56 [WARNING]  * Debugger is active!
+2026-02-19 15:13:56 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:13:59 [INFO] 127.0.0.1 - - [19/Feb/2026 15:13:59] "GET / HTTP/1.1" 200 -
+2026-02-19 15:13:59 [INFO] History endpoint called
+2026-02-19 15:13:59 [INFO] Returned 1 history records
+2026-02-19 15:13:59 [INFO] 127.0.0.1 - - [19/Feb/2026 15:13:59] "GET /history HTTP/1.1" 200 -
+2026-02-19 15:14:51 [INFO] Summarize request received
+2026-02-19 15:14:51 [INFO] Input received — 922 characters
+2026-02-19 15:16:50 [INFO]  * Detected change in 'd:\\AI_textSum\\app.py', reloading
+2026-02-19 15:16:50 [INFO]  * Restarting with stat
+2026-02-19 15:16:51 [INFO] Starting Distill Flask app...
+2026-02-19 15:16:51 [WARNING]  * Debugger is active!
+2026-02-19 15:16:51 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:20:00 [INFO] Starting Distill Flask app...
+2026-02-19 15:20:00 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 15:20:00 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 15:20:00 [INFO]  * Restarting with stat
+2026-02-19 15:20:00 [INFO] Starting Distill Flask app...
+2026-02-19 15:20:00 [WARNING]  * Debugger is active!
+2026-02-19 15:20:00 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:20:08 [INFO] 127.0.0.1 - - [19/Feb/2026 15:20:08] "GET / HTTP/1.1" 200 -
+2026-02-19 15:20:08 [INFO] History endpoint called
+2026-02-19 15:20:08 [INFO] Returned 1 history records
+2026-02-19 15:20:08 [INFO] 127.0.0.1 - - [19/Feb/2026 15:20:08] "GET /history HTTP/1.1" 200 -
+2026-02-19 15:20:21 [INFO] Summarize request received
+2026-02-19 15:20:21 [INFO] Input received — 5027 characters
+2026-02-19 15:20:22 [ERROR] Unexpected error during summarization — API error 400: {"error":"index out of range in self"}
+Traceback (most recent call last):
+  File "d:\AI_textSum\app.py", line 53, in summarize_route
+    summary = summarize(text)
+  File "d:\AI_textSum\summarizer.py", line 44, in summarize
+    raise RuntimeError(f"API error {response.status_code}: {response.text}")
+RuntimeError: API error 400: {"error":"index out of range in self"}
+2026-02-19 15:20:22 [INFO] 127.0.0.1 - - [19/Feb/2026 15:20:22] "[35m[1mPOST /summarize HTTP/1.1[0m" 500 -
+2026-02-19 15:22:41 [INFO]  * Detected change in 'd:\\AI_textSum\\summarizer.py', reloading
+2026-02-19 15:22:41 [INFO]  * Restarting with stat
+2026-02-19 15:22:42 [INFO] Starting Distill Flask app...
+2026-02-19 15:22:42 [WARNING]  * Debugger is active!
+2026-02-19 15:22:42 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:23:04 [INFO] Starting Distill Flask app...
+2026-02-19 15:23:04 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 15:23:04 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 15:23:04 [INFO]  * Restarting with stat
+2026-02-19 15:23:04 [INFO] Starting Distill Flask app...
+2026-02-19 15:23:04 [WARNING]  * Debugger is active!
+2026-02-19 15:23:04 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:23:09 [INFO] 127.0.0.1 - - [19/Feb/2026 15:23:09] "GET / HTTP/1.1" 200 -
+2026-02-19 15:23:09 [INFO] History endpoint called
+2026-02-19 15:23:09 [INFO] Returned 1 history records
+2026-02-19 15:23:09 [INFO] 127.0.0.1 - - [19/Feb/2026 15:23:09] "GET /history HTTP/1.1" 200 -
+2026-02-19 15:23:17 [INFO] Summarize request received
+2026-02-19 15:23:17 [INFO] Input received — 5027 characters
+2026-02-19 15:23:32 [INFO] Summarization successful — completed in 15.51s | Input: 5027 chars | Output: 287 chars
+2026-02-19 15:23:32 [INFO] Summary saved to database
+2026-02-19 15:23:32 [INFO] 127.0.0.1 - - [19/Feb/2026 15:23:32] "POST /summarize HTTP/1.1" 200 -
+2026-02-19 15:23:32 [INFO] History endpoint called
+2026-02-19 15:23:32 [INFO] Returned 2 history records
+2026-02-19 15:23:32 [INFO] 127.0.0.1 - - [19/Feb/2026 15:23:32] "GET /history HTTP/1.1" 200 -
+2026-02-19 15:34:45 [INFO] Starting Distill Flask app...
+2026-02-19 15:34:45 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 15:34:45 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 15:34:45 [INFO]  * Restarting with stat
+2026-02-19 15:34:45 [INFO] Starting Distill Flask app...
+2026-02-19 15:34:45 [WARNING]  * Debugger is active!
+2026-02-19 15:34:45 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 15:34:53 [INFO] 127.0.0.1 - - [19/Feb/2026 15:34:53] "GET / HTTP/1.1" 200 -
+2026-02-19 15:34:53 [INFO] History endpoint called
+2026-02-19 15:34:53 [INFO] Returned 2 history records
+2026-02-19 15:34:53 [INFO] 127.0.0.1 - - [19/Feb/2026 15:34:53] "GET /history HTTP/1.1" 200 -
+2026-02-19 15:35:03 [INFO] Summarize request received
+2026-02-19 15:35:03 [INFO] Input received — 13661 characters
+2026-02-19 15:35:36 [INFO] Summarization successful — completed in 32.95s | Input: 13661 chars | Output: 281 chars
+2026-02-19 15:35:36 [INFO] Summary saved to database
+2026-02-19 15:35:36 [INFO] 127.0.0.1 - - [19/Feb/2026 15:35:36] "POST /summarize HTTP/1.1" 200 -
+2026-02-19 15:35:36 [INFO] History endpoint called
+2026-02-19 15:35:36 [INFO] Returned 3 history records
+2026-02-19 15:35:36 [INFO] 127.0.0.1 - - [19/Feb/2026 15:35:36] "GET /history HTTP/1.1" 200 -

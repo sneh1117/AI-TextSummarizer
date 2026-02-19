@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: ai-summarizer
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    plan: standard  # free tier likely won't handle the model
