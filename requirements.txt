@@ -1,7 +1,4 @@
 flask
-transformers
-torch
-sentencepiece
 gunicorn
 requests
 python-dotenv

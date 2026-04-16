@@ -250,3 +250,121 @@ RuntimeError: API error 400: {"error":"index out of range in self"}
 2026-04-16 12:56:23 [INFO] Returned 4 history records
 2026-04-16 12:56:23 [INFO] 127.0.0.1 - - [16/Apr/2026 12:56:23] "GET /history HTTP/1.1" 200 -
 2026-04-16 12:56:23 [INFO] 127.0.0.1 - - [16/Apr/2026 12:56:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-16 16:28:10 [INFO] Starting Distill Flask app...
+2026-04-16 16:28:10 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-16 16:28:10 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-16 16:28:10 [INFO]  * Restarting with stat
+2026-04-16 16:28:10 [INFO] Starting Distill Flask app...
+2026-04-16 16:28:10 [WARNING]  * Debugger is active!
+2026-04-16 16:28:10 [INFO]  * Debugger PIN: 136-006-074
+2026-04-16 16:28:15 [INFO] Summarize request received
+2026-04-16 16:28:15 [INFO] Input received — 11463 characters
+2026-04-16 16:28:15 [INFO] Summarizing 1999 words
+2026-04-16 16:28:15 [INFO] Split into 5 chunks
+2026-04-16 16:28:15 [INFO] Processing chunk 1/5
+2026-04-16 16:28:15 [INFO] HF_TOKEN present: True
+2026-04-16 16:28:15 [INFO] HF_TOKEN prefix: hf_iGO
+2026-04-16 16:28:15 [INFO] Calling API with 400 words
+2026-04-16 16:28:15 [INFO] API attempt 1/3
+2026-04-16 16:29:15 [ERROR] Attempt 1 timed out after 60s
+2026-04-16 16:29:20 [INFO] API attempt 2/3
+2026-04-16 16:29:26 [INFO] Response status: 200
+2026-04-16 16:29:26 [INFO] Response body: [{"summary_text":"i ate an orange at 4:12 p.m. and stood in a square of sunlight and existed. i've been thinking about how tired i am of trying to be impressive. i think i have spent most of my life performing for an invisible audience. even when i was alone."}]
+2026-04-16 16:29:26 [INFO] Success — summary length: 241 chars
+2026-04-16 16:29:26 [INFO] Processing chunk 2/5
+2026-04-16 16:29:26 [INFO] HF_TOKEN present: True
+2026-04-16 16:29:26 [INFO] HF_TOKEN prefix: hf_iGO
+2026-04-16 16:29:26 [INFO] Calling API with 400 words
+2026-04-16 16:29:26 [INFO] API attempt 1/3
+2026-04-16 16:29:40 [INFO] Response status: 200
+2026-04-16 16:29:40 [INFO] Response body: [{"summary_text":"i don’t know when life became something to win. maybe it started in classrooms, when everything had a number attached to it. maybe that’s why that small orange moment undid me so much. because there was nothing to justify. no narrative. no outcome."}]
+2026-04-16 16:29:40 [INFO] Success — summary length: 248 chars
+2026-04-16 16:29:40 [INFO] Processing chunk 3/5
+2026-04-16 16:29:40 [INFO] HF_TOKEN present: True
+2026-04-16 16:29:40 [INFO] HF_TOKEN prefix: hf_iGO
+2026-04-16 16:29:40 [INFO] Calling API with 400 words
+2026-04-16 16:29:40 [INFO] API attempt 1/3
+2026-04-16 16:30:41 [ERROR] Attempt 1 timed out after 60s
+2026-04-16 16:30:46 [INFO] API attempt 2/3
+2026-04-16 16:31:02 [INFO] 127.0.0.1 - - [16/Apr/2026 16:31:02] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-04-16 16:31:11 [INFO] Response status: 200
+2026-04-16 16:31:11 [INFO] Response body: [{"summary_text":"i think i’ve been starved for that. not success. not validation. just presence. the feeling of actually occupying my own life instead of hovering a few inches above it like a ghost. for years i've lived like someone keeping score. every choice secretly categorized: good decision, b
+2026-04-16 16:31:11 [INFO] Success — summary length: 491 chars
+2026-04-16 16:31:11 [INFO] Processing chunk 4/5
+2026-04-16 16:31:11 [INFO] HF_TOKEN present: True
+2026-04-16 16:31:11 [INFO] HF_TOKEN prefix: hf_iGO
+2026-04-16 16:31:11 [INFO] Calling API with 400 words
+2026-04-16 16:31:11 [INFO] API attempt 1/3
+2026-04-16 16:32:11 [ERROR] Attempt 1 timed out after 60s
+2026-04-16 16:32:16 [INFO] API attempt 2/3
+2026-04-16 16:33:16 [ERROR] Attempt 2 timed out after 60s
+2026-04-16 16:33:21 [INFO] API attempt 3/3
+2026-04-16 16:33:43 [INFO]  * Detected change in 'd:\\AI_textSum\\summarizer.py', reloading
+2026-04-16 16:33:44 [INFO]  * Restarting with stat
+2026-04-16 16:33:44 [INFO] Starting Distill Flask app...
+2026-04-16 16:33:44 [WARNING]  * Debugger is active!
+2026-04-16 16:33:44 [INFO]  * Debugger PIN: 136-006-074
+2026-04-16 16:34:03 [INFO] Starting Distill Flask app...
+2026-04-16 16:34:03 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-16 16:34:03 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-16 16:34:03 [INFO]  * Restarting with stat
+2026-04-16 16:34:04 [INFO] Starting Distill Flask app...
+2026-04-16 16:34:04 [WARNING]  * Debugger is active!
+2026-04-16 16:34:04 [INFO]  * Debugger PIN: 136-006-074
+2026-04-16 16:34:07 [INFO] 127.0.0.1 - - [16/Apr/2026 16:34:07] "GET / HTTP/1.1" 200 -
+2026-04-16 16:34:07 [INFO] 127.0.0.1 - - [16/Apr/2026 16:34:07] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-04-16 16:34:07 [INFO] History endpoint called
+2026-04-16 16:34:07 [INFO] Returned 4 history records
+2026-04-16 16:34:07 [INFO] 127.0.0.1 - - [16/Apr/2026 16:34:07] "GET /history HTTP/1.1" 200 -
+2026-04-16 16:34:34 [INFO] Summarize request received
+2026-04-16 16:34:34 [INFO] Input received — 8706 characters
+2026-04-16 16:34:34 [INFO] Summarizing 1519 words
+2026-04-16 16:34:34 [INFO] Split into 4 chunks
+2026-04-16 16:34:34 [INFO] Processing chunk 1/4
+2026-04-16 16:34:34 [INFO] HF_TOKEN present: True
+2026-04-16 16:34:34 [INFO] HF_TOKEN prefix: hf_iGO
+2026-04-16 16:34:34 [INFO] Calling API with 400 words
+2026-04-16 16:34:34 [INFO] API attempt 1/3
+2026-04-16 16:34:52 [INFO] Response status: 200
+2026-04-16 16:34:52 [INFO] Response body: [{"summary_text":" Last week i was peeling an orange in the kitchen and i didn’t mean for it to become anything . i remember thinking i should probably be doing something else. something useful. something that could be named and justified. But instead i was just there, cutting this orange into uneve
+2026-04-16 16:34:52 [INFO] Success — summary length: 382 chars
+2026-04-16 16:34:52 [INFO] Processing chunk 2/4
+2026-04-16 16:34:52 [INFO] HF_TOKEN present: True
+2026-04-16 16:34:52 [INFO] HF_TOKEN prefix: hf_iGO
+2026-04-16 16:34:52 [INFO] Calling API with 400 words
+2026-04-16 16:34:52 [INFO] API attempt 1/3
+2026-04-16 16:34:54 [INFO] Response status: 200
+2026-04-16 16:34:54 [INFO] Response body: [{"summary_text":" i don’t know when life became something to win, maybe it started in classrooms, when everything had a number attached to it . Maybe it’s just what happens when you grow up a girl who feels too much, you start trying to convert your feelings into achievements so they look less emba
+2026-04-16 16:34:54 [INFO] Success — summary length: 292 chars
+2026-04-16 16:34:54 [INFO] Processing chunk 3/4
+2026-04-16 16:34:54 [INFO] HF_TOKEN present: True
+2026-04-16 16:34:54 [INFO] HF_TOKEN prefix: hf_iGO
+2026-04-16 16:34:54 [INFO] Calling API with 400 words
+2026-04-16 16:34:54 [INFO] API attempt 1/3
+2026-04-16 16:34:56 [INFO] Response status: 200
+2026-04-16 16:34:56 [INFO] Response body: [{"summary_text":" i think i’ve been starved for that. not success. not validation. just presence. the feeling of actually occupying my own life instead of hovering a few inches above it like a ghost . For years i've lived like someone keeping score. Every choice secretly categorized: good decision,
+2026-04-16 16:34:56 [INFO] Success — summary length: 322 chars
+2026-04-16 16:34:56 [INFO] Processing chunk 4/4
+2026-04-16 16:34:56 [INFO] HF_TOKEN present: True
+2026-04-16 16:34:56 [INFO] HF_TOKEN prefix: hf_iGO
+2026-04-16 16:34:56 [INFO] Calling API with 319 words
+2026-04-16 16:34:56 [INFO] API attempt 1/3
+2026-04-16 16:34:58 [INFO] Response status: 200
+2026-04-16 16:34:58 [INFO] Response body: [{"summary_text":" The days i thought were failures, the ones where i stayed in bed too long, where nothing got done, where i just existed and felt vaguely sad and watched the ceiling fan spin, those are days i was a person . Those days i inhabited a body. days i breathed and thought and remembered 
+2026-04-16 16:34:58 [INFO] Success — summary length: 290 chars
+2026-04-16 16:34:58 [INFO] Running final summary pass on combined chunks
+2026-04-16 16:34:58 [INFO] HF_TOKEN present: True
+2026-04-16 16:34:58 [INFO] HF_TOKEN prefix: hf_iGO
+2026-04-16 16:34:58 [INFO] Calling API with 235 words
+2026-04-16 16:34:58 [INFO] API attempt 1/3
+2026-04-16 16:35:01 [INFO] Response status: 200
+2026-04-16 16:35:01 [INFO] Response body: [{"summary_text":" i ate an orange at 4:12 p.m. and stood in a square of sunlight and existed . i don't know when life became something to win, maybe it started in classrooms, when everything had a number attached to it . Maybe it’s just what happens when you grow up a girl who feels too much, you s
+2026-04-16 16:35:01 [INFO] Success — summary length: 369 chars
+2026-04-16 16:35:01 [INFO] Summarization successful — completed in 26.3s | Input: 8706 chars | Output: 369 chars
+2026-04-16 16:35:01 [INFO] Summary saved to database
+2026-04-16 16:35:01 [INFO] 127.0.0.1 - - [16/Apr/2026 16:35:01] "POST /summarize HTTP/1.1" 200 -
+2026-04-16 16:35:01 [INFO] History endpoint called
+2026-04-16 16:35:01 [INFO] Returned 5 history records
+2026-04-16 16:35:01 [INFO] 127.0.0.1 - - [16/Apr/2026 16:35:01] "GET /history HTTP/1.1" 200 -
