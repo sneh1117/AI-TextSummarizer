@@ -1,5 +1,6 @@
 import requests
 import os
+import time
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -27,8 +28,7 @@ def validate_text(text):
     return text
 
 
-def call_api(text):
-    """Send a single chunk to the HuggingFace API."""
+def call_api(text, retries=3, wait=25):
     payload = {
         "inputs": text,
         "parameters": {
@@ -37,18 +37,31 @@ def call_api(text):
             "do_sample": False
         }
     }
-    response = requests.post(API_URL, headers=HEADERS, json=payload)
+    for attempt in range(retries):
+        try:
+            response = requests.post(API_URL, headers=HEADERS, json=payload, timeout=60)
 
-    if response.status_code == 503:
-        raise RuntimeError("Model is loading on HuggingFace servers, try again in 20 seconds.")
-    if response.status_code != 200:
-        raise RuntimeError(f"API error {response.status_code}: {response.text}")
+            if response.status_code == 200:
+                return response.json()[0]["summary_text"]
+            elif response.status_code == 503:
+                if attempt < retries - 1:
+                    time.sleep(wait)
+                    continue
+                raise RuntimeError("Model is loading, please try again in 30 seconds.")
+            else:
+                raise RuntimeError(f"API error {response.status_code}: {response.text}")
 
-    return response.json()[0]["summary_text"]
+        except requests.exceptions.Timeout:
+            if attempt < retries - 1:
+                time.sleep(5)
+                continue
+            raise RuntimeError("HuggingFace API timed out. Please try again.")
+
+        except requests.exceptions.RequestException as e:
+            raise RuntimeError(f"Network error: {str(e)}")
 
 
 def chunk_text(text, chunk_size=400):
-    """Split text into word-based chunks."""
     words = text.split()
     chunks = []
     for i in range(0, len(words), chunk_size):
@@ -61,11 +74,9 @@ def summarize(text):
     text = validate_text(text)
     word_count = len(text.split())
 
-    # Short enough — send directly
     if word_count <= 400:
         return call_api(text)
 
-    # Too long — chunk it, summarize each, then summarize the summaries
     chunks = chunk_text(text, chunk_size=400)
     chunk_summaries = []
 
@@ -73,13 +84,9 @@ def summarize(text):
         chunk_summary = call_api(chunk)
         chunk_summaries.append(chunk_summary)
 
-    # If only one chunk came back just return it
     if len(chunk_summaries) == 1:
         return chunk_summaries[0]
 
-    # Final pass — combine all chunk summaries into one
     combined = " ".join(chunk_summaries)
     final_summary = call_api(combined)
     return final_summary
-
-

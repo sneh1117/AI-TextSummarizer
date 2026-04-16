@@ -210,3 +210,43 @@ RuntimeError: API error 400: {"error":"index out of range in self"}
 2026-02-19 15:35:36 [INFO] History endpoint called
 2026-02-19 15:35:36 [INFO] Returned 3 history records
 2026-02-19 15:35:36 [INFO] 127.0.0.1 - - [19/Feb/2026 15:35:36] "GET /history HTTP/1.1" 200 -
+2026-02-19 16:26:46 [INFO] Starting Distill Flask app...
+2026-02-19 16:26:46 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-19 16:26:46 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-19 16:26:46 [INFO]  * Restarting with stat
+2026-02-19 16:26:46 [INFO] Starting Distill Flask app...
+2026-02-19 16:26:46 [WARNING]  * Debugger is active!
+2026-02-19 16:26:46 [INFO]  * Debugger PIN: 136-006-074
+2026-02-19 16:26:53 [INFO] 127.0.0.1 - - [19/Feb/2026 16:26:53] "GET / HTTP/1.1" 200 -
+2026-02-19 16:26:53 [INFO] History endpoint called
+2026-02-19 16:26:53 [INFO] Returned 3 history records
+2026-02-19 16:26:53 [INFO] 127.0.0.1 - - [19/Feb/2026 16:26:53] "GET /history HTTP/1.1" 200 -
+2026-02-19 16:27:31 [INFO] Summarize request received
+2026-02-19 16:27:31 [INFO] Input received — 9248 characters
+2026-02-19 16:28:31 [INFO] Summarization successful — completed in 60.86s | Input: 9248 chars | Output: 256 chars
+2026-02-19 16:28:31 [INFO] Summary saved to database
+2026-02-19 16:28:31 [INFO] 127.0.0.1 - - [19/Feb/2026 16:28:31] "POST /summarize HTTP/1.1" 200 -
+2026-02-19 16:28:31 [INFO] History endpoint called
+2026-02-19 16:28:31 [INFO] Returned 4 history records
+2026-02-19 16:28:32 [INFO] 127.0.0.1 - - [19/Feb/2026 16:28:32] "GET /history HTTP/1.1" 200 -
+2026-02-19 16:33:37 [INFO] 127.0.0.1 - - [19/Feb/2026 16:33:37] "GET / HTTP/1.1" 200 -
+2026-02-19 16:33:37 [INFO] History endpoint called
+2026-02-19 16:33:37 [INFO] Returned 4 history records
+2026-02-19 16:33:37 [INFO] 127.0.0.1 - - [19/Feb/2026 16:33:37] "GET /history HTTP/1.1" 200 -
+2026-02-19 16:33:42 [INFO] History endpoint called
+2026-02-19 16:33:42 [INFO] Returned 4 history records
+2026-02-19 16:33:42 [INFO] 127.0.0.1 - - [19/Feb/2026 16:33:42] "GET /history HTTP/1.1" 200 -
+2026-04-16 12:56:17 [INFO] Starting Distill Flask app...
+2026-04-16 12:56:18 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-16 12:56:18 [INFO] [33mPress CTRL+C to quit[0m
+2026-04-16 12:56:18 [INFO]  * Restarting with stat
+2026-04-16 12:56:18 [INFO] Starting Distill Flask app...
+2026-04-16 12:56:18 [WARNING]  * Debugger is active!
+2026-04-16 12:56:18 [INFO]  * Debugger PIN: 136-006-074
+2026-04-16 12:56:23 [INFO] 127.0.0.1 - - [16/Apr/2026 12:56:23] "GET / HTTP/1.1" 200 -
+2026-04-16 12:56:23 [INFO] History endpoint called
+2026-04-16 12:56:23 [INFO] Returned 4 history records
+2026-04-16 12:56:23 [INFO] 127.0.0.1 - - [16/Apr/2026 12:56:23] "GET /history HTTP/1.1" 200 -
+2026-04-16 12:56:23 [INFO] 127.0.0.1 - - [16/Apr/2026 12:56:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
