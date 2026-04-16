@@ -8,7 +8,7 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 
-API_URL = "https://router.huggingface.co/hf-inference/models/facebook/bart-large-cnn"
+API_URL = "https://router.huggingface.co/hf-inference/models/sshleifer/distilbart-cnn-12-6"
 HF_TOKEN = os.getenv('HF_TOKEN')
 HEADERS = {"Authorization": f"Bearer {HF_TOKEN}"}
 
